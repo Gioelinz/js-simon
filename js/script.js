@@ -7,4 +7,9 @@ controllare che i numeri casuali siano diversi tra loro
 controllare che l'utente non inserisca 2 volte lo stesso numero */
 
 const getRndNum = (min, max) => Math.floor(Math.random() * max + min + 1) - min;
+let memoryNumber = [];
 
+for (let i = 0; i < 5; i++) {
+    memoryNumber.push(getRndNum(1, 50));
+}
+console.log(memoryNumber)
