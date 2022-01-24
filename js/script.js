@@ -6,10 +6,29 @@ Bonus:
 controllare che i numeri casuali siano diversi tra loro
 controllare che l'utente non inserisca 2 volte lo stesso numero */
 
-const getRndNum = (min, max) => Math.floor(Math.random() * max + min + 1) - min;
+const getRndNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 let memoryNumber = [];
+const attempsNumber = 5;
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < attempsNumber; i++) {
     memoryNumber.push(getRndNum(1, 50));
 }
-console.log(memoryNumber)
+const showRndNums = alert(
+    `Ricorda questi numeri:
+${memoryNumber}`);
+
+
+let correctNumbers = [];
+const memoryGame = () => {
+    for (let i = 0; i < attempsNumber; i++) {
+        let userChoice = attempsNumber[i];
+        userChoice = parseInt(prompt("Inserisci un numero"));
+        if (memoryNumber.includes(userChoice)) {
+            correctNumbers.push(userChoice)
+        }
+    }
+}
+
+memoryGame();
+
+console.log(correctNumbers)
