@@ -17,18 +17,19 @@ const showRndNums = alert(
     `Ricorda questi numeri:
 ${memoryNumber}`);
 
-
+let countCorrect = 0;
 let correctNumbers = [];
 const memoryGame = () => {
     for (let i = 0; i < attempsNumber; i++) {
         let userChoice = attempsNumber[i];
-        userChoice = parseInt(prompt("Inserisci un numero"));
+        userChoice = parseInt(prompt("Inserisci un numero").trim());
         if (memoryNumber.includes(userChoice)) {
-            correctNumbers.push(userChoice)
+            correctNumbers.push(userChoice);
+            countCorrect++;
         }
     }
+    return finalResult = alert(`Hai indovinato ${countCorrect} Numeri
+Sono: ${correctNumbers}`);
 }
 
-memoryGame();
-
-console.log(correctNumbers)
+setTimeout(memoryGame, 30000);
