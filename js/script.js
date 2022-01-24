@@ -10,12 +10,18 @@ const getRndNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + mi
 let memoryNumber = [];
 const attempsNumber = 5;
 
-for (let i = 0; i < attempsNumber; i++) {
-    memoryNumber.push(getRndNum(1, 50));
+
+// | Controllo per numeri non doppioni
+while (memoryNumber.length < attempsNumber) {
+    const generateNum = getRndNum(1, 50)
+    if (!memoryNumber.includes(generateNum)) memoryNumber.push(generateNum);
 }
+// | Genera numeri da ricordare sull alert 
 const showRndNums = alert(
     `Ricorda questi numeri:
 ${memoryNumber}`);
+
+// | inizializzo gioco/funzione
 
 let countCorrect = 0;
 let correctNumbers = [];
@@ -23,7 +29,10 @@ const memoryGame = () => {
     for (let i = 0; i < attempsNumber; i++) {
         let userChoice = attempsNumber[i];
         userChoice = parseInt(prompt("Inserisci un numero").trim());
-        if (memoryNumber.includes(userChoice)) {
+        if (isNaN(userChoice) || userChoice <= 0) {
+            alert("Non hai inserito un numero valido");
+            userChoice = parseInt(prompt("Inserisci un numero corretto (altrimenti perdi una possibilità)").trim());
+        } else if (memoryNumber.includes(userChoice)) {
             correctNumbers.push(userChoice);
             countCorrect++;
         }
@@ -32,4 +41,4 @@ const memoryGame = () => {
 Sono: ${correctNumbers}`);
 }
 
-setTimeout(memoryGame, 30000);
+setTimeout(memoryGame, 3000);
