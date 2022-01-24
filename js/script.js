@@ -37,8 +37,9 @@ const memoryGame = () => {
             countCorrect++;
         }
     }
-    return finalResult = alert(`Hai indovinato ${countCorrect} Numeri
+    const finalResult = alert(`Hai indovinato ${countCorrect} Numeri
 Sono: ${correctNumbers}`);
+    return finalResult;
 }
 
-setTimeout(memoryGame, 3000);
+setTimeout(memoryGame, 30000);
